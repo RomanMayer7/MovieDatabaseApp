@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_search"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchActivity">
+
+    <Spinner
+        android:id="@+id/searchTerm"
+        android:layout_width="139dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="120sp"
+        android:layout_marginLeft="120sp" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="270sp"
+        android:layout_marginLeft="270sp"
+        android:text="Search DB"
+        app:backgroundTint="#9C27B0" />
+
+
+    <ListView
+        android:id="@+id/moviesList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnSubmit" >
+    </ListView>
+
+    <TextView
+        android:id="@+id/editViewSearchBy"
+        android:layout_width="109dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="10sp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginTop="10sp"
+        android:clickable="false"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Search By:"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/editTextSearchInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="270sp"
+        android:layout_below="@id/btnSubmit"
+        android:hint="Type Search Params:" />
+
+
+</RelativeLayout>
