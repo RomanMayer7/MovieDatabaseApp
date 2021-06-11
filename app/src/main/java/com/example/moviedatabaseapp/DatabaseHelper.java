@@ -207,4 +207,111 @@ void addMovie(MovieModel movie) {
         db.close();
     } //public void deleteMovie(MovieModel movie)
 
+    // ======================Getting All Movies by Title=============================
+    public List getMoviesByTitle(String userInput)
+    {
+        Log.i("MainActivity","Inside getMoviesByTitle()");
+        List moviesList = new ArrayList();
+        // Select All Query
+        String selectQuery = "SELECT * FROM " + MOVIES_TABLE+ " WHERE title LIKE '%"+userInput+"%'";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                MovieModel movie = new MovieModel();
+                movie.setId(Integer.parseInt(cursor.getString(0)));
+                movie.setTitle(cursor.getString(1));
+                movie.setYear(Integer.parseInt(cursor.getString(2)));
+                movie.setGenre(cursor.getString(3));
+                movie.setActor(cursor.getString(4));
+                Log.i("getMoviesByTitle",movie.getTitle());
+                // Adding country to list
+                moviesList.add(movie);
+            } while (cursor.moveToNext());
+        }
+
+        return moviesList;
+    } //public List getMoviesByTitle(String userInput)
+
+    // ======================Getting All Movies by Year=============================
+    public Object getMoviesByYear(String userInput)
+    {
+        Log.i("MainActivity","Inside getMoviesByYear()");
+        List moviesList = new ArrayList();
+        // Select All Query
+        String selectQuery = "SELECT * FROM " + MOVIES_TABLE+ " WHERE year='"+userInput+"'";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                MovieModel movie = new MovieModel();
+                movie.setId(Integer.parseInt(cursor.getString(0)));
+                movie.setTitle(cursor.getString(1));
+                movie.setYear(Integer.parseInt(cursor.getString(2)));
+                movie.setGenre(cursor.getString(3));
+                movie.setActor(cursor.getString(4));
+                Log.i("getMoviesByTitle",movie.getTitle());
+                // Adding country to list
+                moviesList.add(movie);
+            } while (cursor.moveToNext());
+        }
+
+        return moviesList;
+    } //public Object getMoviesByYear(String userInput)
+
+    // ======================Getting All Movies by Genre=============================
+    public Object getMoviesByGenre(String userInput)
+    {
+        Log.i("MainActivity","Inside getMoviesByGenre()");
+        List moviesList = new ArrayList();
+        // Select All Query
+        String selectQuery = "SELECT * FROM " + MOVIES_TABLE+ " WHERE genre LIKE '%"+userInput+"%'";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                MovieModel movie = new MovieModel();
+                movie.setId(Integer.parseInt(cursor.getString(0)));
+                movie.setTitle(cursor.getString(1));
+                movie.setYear(Integer.parseInt(cursor.getString(2)));
+                movie.setGenre(cursor.getString(3));
+                movie.setActor(cursor.getString(4));
+                Log.i("getMoviesByTitle",movie.getTitle());
+                // Adding country to list
+                moviesList.add(movie);
+            } while (cursor.moveToNext());
+        }
+
+        return moviesList;
+    } //public Object getMoviesByGenre(String userInput)
+
+    // ======================Getting All Movies by Actor=============================
+    public Object getMoviesByActor(String userInput)
+    {
+        Log.i("MainActivity","Inside getMoviesByActor()");
+        List moviesList = new ArrayList();
+        // Select All Query
+        String selectQuery = "SELECT * FROM " + MOVIES_TABLE+ " WHERE actor LIKE '%"+userInput+"%'";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                MovieModel movie = new MovieModel();
+                movie.setId(Integer.parseInt(cursor.getString(0)));
+                movie.setTitle(cursor.getString(1));
+                movie.setYear(Integer.parseInt(cursor.getString(2)));
+                movie.setGenre(cursor.getString(3));
+                movie.setActor(cursor.getString(4));
+                Log.i("getMoviesByTitle",movie.getTitle());
+                // Adding country to list
+                moviesList.add(movie);
+            } while (cursor.moveToNext());
+        }
+
+        return moviesList;
+    } //public Object getMoviesByActor(String userInput)
 }
