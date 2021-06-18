@@ -7,7 +7,7 @@
     tools:context=".MainMenuActivity">
 
     <Button
-        android:id="@+id/selectActorButton"
+        android:id="@+id/actorsDBButton"
         android:layout_width="260dp"
         android:layout_height="47dp"
         android:layout_marginStart="84dp"
@@ -16,7 +16,7 @@
         android:layout_marginEnd="67dp"
         android:layout_marginRight="67dp"
         android:gravity="center"
-        android:text="Select Actor"
+        android:text="Actors"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />

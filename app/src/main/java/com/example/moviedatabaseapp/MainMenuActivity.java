@@ -22,7 +22,7 @@ public class MainMenuActivity extends AppCompatActivity {
     ArrayList movies;
     DatabaseHelper dbHelper;
     SQLiteDatabase sqlDB;
-    Button searchDBButton;
+    Button searchDBButton,actorsDBButton;
     MoviesListAdapter moviesListAdapter;
 
     @Override
@@ -36,6 +36,7 @@ public class MainMenuActivity extends AppCompatActivity {
         //dbHelper.dropDBTables(sqlDB);
         //dbHelper.onCreate(sqlDB);
         //populateMovieTable();
+        //populateActorsTable();
         Button addRecordButton = (Button) findViewById(R.id.addRecordButton);
         addRecordButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,8 +52,18 @@ public class MainMenuActivity extends AppCompatActivity {
         searchDBButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Intent intent = new Intent(getBaseContext(), MainActivity.class);
+
                 Intent intent = new Intent(getBaseContext(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        actorsDBButton = findViewById(R.id.actorsDBButton);
+        actorsDBButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getBaseContext(), ActorsViewActivity.class);
                 startActivity(intent);
             }
         });
@@ -91,6 +102,32 @@ public class MainMenuActivity extends AppCompatActivity {
         addRecordToMoviesTable("The Road","2009","Drama","Charlize Theron");
         addRecordToMoviesTable("Dune","1984","Sci-fi","Kyle MacLachlan");
     } //protected void populateMovieTable()
+
+    protected void addRecordToActorsTable(String actor,String image, String imdb)
+    {
+
+        ContentValues cv_values = new ContentValues();
+        cv_values.put(DatabaseHelper.NAME,actor);
+
+        //ContentValues cv_image = new ContentValues();
+        cv_values.put(DatabaseHelper.IMAGE,image);
+
+        //ContentValues cv_imdb = new ContentValues();
+        cv_values.put(DatabaseHelper.IMDB,imdb);
+
+
+        //CALL INSERT METHOD
+        sqlDB.insert(DatabaseHelper.ACTORS_TABLE,null,cv_values);
+
+    }//protected void addRecordToActorsTable(String actor,String image, String imdb)
+
+    protected void populateActorsTable()
+    {
+        addRecordToActorsTable("Charlize Theron","charlize_theron.jpg","nm0000234");
+        addRecordToActorsTable("Kyle MacLachlan","kyle.jpg","nm0001492");
+        addRecordToActorsTable("Viggo Mortensen","viggo.jpg","nm0001557");
+
+    } // protected void populateActorsTable()
 
     public void addPopUp()
     {
