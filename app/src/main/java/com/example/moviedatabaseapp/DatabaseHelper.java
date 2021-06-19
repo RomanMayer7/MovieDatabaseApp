@@ -314,4 +314,17 @@ void addMovie(MovieModel movie) {
 
         return moviesList;
     } //public Object getMoviesByActor(String userInput)
+
+    boolean checkIfTableEmpty(String tableName)
+    {
+        boolean empty = true;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cur = db.rawQuery("SELECT COUNT(*) FROM "+tableName, null);
+        if (cur != null && cur.moveToFirst()) {
+            empty = (cur.getInt (0) == 0);
+        }
+        cur.close();
+
+        return empty;
+    }//boolean checkIfTableEmpty(String tableName)
 }

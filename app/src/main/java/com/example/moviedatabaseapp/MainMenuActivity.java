@@ -22,7 +22,7 @@ public class MainMenuActivity extends AppCompatActivity {
     ArrayList movies;
     DatabaseHelper dbHelper;
     SQLiteDatabase sqlDB;
-    Button searchDBButton,actorsDBButton;
+    Button searchDBButton,actorsDBButton,aboutButton,helpButton,exitButton;
     MoviesListAdapter moviesListAdapter;
 
     @Override
@@ -33,10 +33,13 @@ public class MainMenuActivity extends AppCompatActivity {
         setupControls();
         dbHelper = new DatabaseHelper(this);
         sqlDB = dbHelper.getWritableDatabase();
-        //dbHelper.dropDBTables(sqlDB);
-        //dbHelper.onCreate(sqlDB);
-        //populateMovieTable();
-        //populateActorsTable();
+        if(dbHelper.checkIfTableEmpty(DatabaseHelper.ACTORS_TABLE)) {
+            populateActorsTable();
+        }
+        if(dbHelper.checkIfTableEmpty(DatabaseHelper.MOVIES_TABLE)) {
+            populateMovieTable();
+        }
+
         Button addRecordButton = (Button) findViewById(R.id.addRecordButton);
         addRecordButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +70,37 @@ public class MainMenuActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        aboutButton = findViewById(R.id.aboutButton);
+        aboutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getBaseContext(), AboutActivity.class);
+                startActivity(intent);
+            }
+        });
+
+       helpButton = findViewById(R.id.helpButton);
+        helpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getBaseContext(), HelpActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        exitButton = findViewById(R.id.exitButton);
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
+            }
+        });
+
     } // protected void setupControls()
 
 
